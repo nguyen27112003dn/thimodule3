@@ -9,4 +9,8 @@ public interface IProductRepository {
     List<Product> findAll();
 
     void createProduct(Product product);
+
+    void delete(int id);
+
+
 }

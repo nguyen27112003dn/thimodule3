@@ -21,8 +21,8 @@ public class CategoryRepository implements ICategoryRepository {
         ) {
             ResultSet resultSet = statement.executeQuery(SELECT_CATEGORY);
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name_category = resultSet.getString("name_category");
+                int id = resultSet.getInt("CategoryID");
+                String name_category = resultSet.getString("CategoryName");
                 Category category = new Category(id, name_category);
                 list.add(category);
             }
@@ -31,5 +31,4 @@ public class CategoryRepository implements ICategoryRepository {
         }
         return list;
     }
-
 }

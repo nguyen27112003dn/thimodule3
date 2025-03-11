@@ -1,6 +1,5 @@
 package com.example.thi.service;
 
-import com.example.thi.entity.Category;
 import com.example.thi.entity.Product;
 import com.example.thi.repository.ProductRepository;
 import com.example.thi.repository.imp.IProductRepository;
@@ -24,5 +23,10 @@ public class ProductService implements IProductService {
     @Override
     public void create(Product product) {
         iProductRepository.createProduct(product);
+    }
+
+    @Override
+    public void delete(int id) {
+        iProductRepository.delete(id);
     }
 }

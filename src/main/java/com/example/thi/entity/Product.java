@@ -20,6 +20,15 @@ public class Product {
         this.Category = Category;
     }
 
+    public Product(String name, double price, int quantity, String color, String description, com.example.thi.entity.Category category) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.color = color;
+        this.description = description;
+        Category = category;
+    }
+
     public Product(String name, Double price, int quantity, String color, Category Category) {
         this.name = name;
         this.price = price;

@@ -12,7 +12,8 @@ public class ProductRepository implements IProductRepository {
     private final String SELECT = "SELECT p.ProductID, p.ProductName, p.Price, p.Quantity, p.Color, p.Description, c.CategoryID, c.CategoryName " +
             "FROM Product p JOIN Category c ON p.CategoryID = c.CategoryID";
     private final String INSERT = "INSERT INTO Product (ProductName, Price, Quantity, Color, Description, CategoryID) VALUES \n" +
-            "(?, ?, ?, ?, ?, ?),";
+            "(?, ?, ?, ?, ?, ?)";
+    private final String DELETE = "delete from Product where ProductID = ?";
 
 
     @Override
@@ -50,11 +51,24 @@ public class ProductRepository implements IProductRepository {
             preparedStatement.setDouble(2, product.getProductPrice());
             preparedStatement.setInt(3, product.getQuantity());
             preparedStatement.setString(4, product.getColor());
-            preparedStatement.setString(5, product.getCategory().getnameCategory());
+            preparedStatement.setString(5, product.getProductDescription());
+            preparedStatement.setString(6, product.getCategory().getnameCategory());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void delete(int id) {
+        try (
+                Connection connection = BaseRepository.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(DELETE);
+        ) {
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 }
-

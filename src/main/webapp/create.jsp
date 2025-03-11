@@ -38,11 +38,10 @@
             <label class="form-label">Category</label>
             <select name="category" class="form-control">
                 <c:forEach var="category" items="${categoryList}">
-                    <option value="${category.id}">${category.name}</option>
+                    <option value="${category.id}">${category.nameCategory}</option>
                 </c:forEach>
             </select>
         </div>
-
         <button type="submit" class="btn btn-success">Create</button>
         <a href="/products" class="btn btn-secondary">Back</a>
     </form>
